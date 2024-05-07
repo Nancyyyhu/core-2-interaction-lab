@@ -45,7 +45,7 @@ let recipe = [
 ];
 
 let container = document.getElementById("container");
-console.log(recipe);
+console.log(recipe[0]);
  
 
 
