@@ -16,15 +16,18 @@ function makeItGreen() {
 
 let recipe = [
 	{
-		"item": "Lavender Oatmilk Matcha",
-		"type": "Milktea",
-		"taste": "Sweet",
-		"price": {
+		"item": "lavender oatmilk matcha",
+		"store": "Starbucks",
+		"type": "milktea",
+		"taste": "sweet",
+		"prepTimeMinutes": 5,
+		"caloriesKilojoule": 310,
+		"priceDollar": {
 			"small": 5.25,
 			"medium": 6.5,
 			"large": 7.25
 		},
-		"size": {
+		"sizeMilliliter": {
 			"small": 300,
 			"medium": 500,
 			"large": 700
@@ -38,10 +41,23 @@ let recipe = [
 			"hassuger": true,
 			"hasCoffee": false
 		},
-		"store": "Starbucks"
 	}
 ];
 
 let container = document.getElementById("container");
  
+
+
+
+var apiUrl = "https://api.weather.gov/gridpoints/TOP/31,80/forecast";
+fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {
+    var forecastContainer = document.getElementById("circle");
+    data.properties.periods.forEach(period => {
+        var forecastDiv = document.createElement("div");
+        forecastDiv.textContent = period.name + ": " + period.temperature + " °F";
+        forecastContainer.appendChild(forecastDiv);
+    });
+  });
 
